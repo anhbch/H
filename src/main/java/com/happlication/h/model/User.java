@@ -1,9 +1,10 @@
 package com.happlication.h.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
+
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.List;
 
