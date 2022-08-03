@@ -32,6 +32,10 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @NotEmpty
+    @Column(name ="email", nullable = false, unique = true)
+    private String email;
+
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Event> events;
 

@@ -1,6 +1,7 @@
 package com.happlication.h.service.DTO;
 
 
+import com.happlication.h.Utils.ValidEmail;
 import com.happlication.h.security.PasswordMatches;
 import com.sun.istack.NotNull;
 import org.springframework.validation.annotation.Validated;
@@ -16,20 +17,21 @@ public class UserRegistrationDto {
     @NotNull
     private String userName;
 
-//    @NotNull
-//    @ValidEmail
-//    private String email;
+    @NotNull
+    @ValidEmail
+    private String email;
 
     @NotNull
     private String password;
     @NotNull
     private String matchingPassword;
 
-    public UserRegistrationDto(String firstName, String lastName, String userName, String password, String matchingPassword) {
+
+    public UserRegistrationDto(String firstName, String lastName, String userName, String email, String password, String matchingPassword) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
-//        this.email = email;
+        this.email = email;
         this.password = password;
         this.matchingPassword = matchingPassword;
     }
@@ -58,13 +60,13 @@ public class UserRegistrationDto {
         this.userName = userName;
     }
 
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getPassword() {
         return password;
