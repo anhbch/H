@@ -1,9 +1,12 @@
 package com.happlication.h.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "event")
@@ -28,22 +31,29 @@ public class Event {
     @JoinColumn(updatable = false)
     private User user;
 
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<MediaUpload> media;
+
     public Event() {
     }
 
-    public Event(Long eventId, String eventName, String description, LocalDate eventDate, User user) {
+    public Event(Long eventId, String eventName, String description, LocalDate eventDate,
+                 User user, List<MediaUpload> media) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.description = description;
         this.eventDate = eventDate;
         this.user = user;
+        this.media = media;
     }
 
-    public Event(String eventName, String description, LocalDate eventDate, User user) {
+    public Event(String eventName, String description, LocalDate eventDate, User user, List<MediaUpload> media) {
         this.eventName = eventName;
         this.description = description;
         this.eventDate = eventDate;
         this.user = user;
+        this.media = media;
     }
 
     public Long getEventId() {
@@ -84,6 +94,14 @@ public class Event {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<MediaUpload> getMedia() {
+        return media;
+    }
+
+    public void setMedia(List<MediaUpload> media) {
+        this.media = media;
     }
 }
 

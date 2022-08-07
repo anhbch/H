@@ -1,7 +1,7 @@
 package com.happlication.h.service.DTO;
 
 
-import com.happlication.h.Utils.ValidEmail;
+import com.happlication.h.security.ValidEmail;
 import com.happlication.h.security.PasswordMatches;
 import com.sun.istack.NotNull;
 import org.springframework.validation.annotation.Validated;

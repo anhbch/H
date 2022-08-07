@@ -36,6 +36,9 @@ public class User {
     @Column(name ="email", nullable = false, unique = true)
     private String email;
 
+    @Column(name = "ava_url")
+    private String avaUrl;
+
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Event> events;
 
@@ -51,19 +54,25 @@ public class User {
 
     }
 
-    public User(String userName, String lastName, String firstName, String password) {
-        this.userName = userName;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.password = password;
-    }
-
-    public User(Long id, String userName, String lastName, String firstName, String password, List<Event> events, LocalDate date) {
+    public User(Long id, String userName, String lastName, String firstName, String password, String email, String avaUrl, List<Event> events, LocalDate date) {
         this.id = id;
         this.userName = userName;
         this.lastName = lastName;
         this.firstName = firstName;
         this.password = password;
+        this.email = email;
+        this.avaUrl = avaUrl;
+        this.events = events;
+        this.date = date;
+    }
+
+    public User(String userName, String lastName, String firstName, String password, String email, String avaUrl, List<Event> events, LocalDate date) {
+        this.userName = userName;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.password = password;
+        this.email = email;
+        this.avaUrl = avaUrl;
         this.events = events;
         this.date = date;
     }
@@ -124,6 +133,22 @@ public class User {
 
     public void setEvents(List<Event> events) {
         this.events = events;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAvaUrl() {
+        return avaUrl;
+    }
+
+    public void setAvaUrl(String avaUrl) {
+        this.avaUrl = avaUrl;
     }
 }
 

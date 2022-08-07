@@ -1,4 +1,6 @@
-package com.happlication.h.Utils;
+package com.happlication.h.security;
+
+import com.happlication.h.security.EmailValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
