@@ -24,7 +24,7 @@ public class Todo {
     @ManyToOne(optional = false)
     @JsonIgnoreProperties(value = "todos", allowSetters = true)
 //    @JsonIgnore
-    @JoinColumn(updatable = false)
+    @JoinColumn
     private User author;
 
     private int focusTime;

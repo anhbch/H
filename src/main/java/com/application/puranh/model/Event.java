@@ -27,7 +27,7 @@ public class Event {
     //    @Column(name = "user_id", nullable = false)
     @ManyToOne(optional = false)
 //    @JsonIgnoreProperties(value = "events", allowSetters = true)
-    @JoinColumn(updatable = false)
+    @JoinColumn
     private User user;
 
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)

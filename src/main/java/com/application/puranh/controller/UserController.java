@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+
 @RestController
 @RequestMapping(path = "/api/user")
 public class UserController {
@@ -27,8 +28,9 @@ public class UserController {
     }
 
     @GetMapping(path = "/get-all")
-    public List<User> getAllUsers () {
-        return userService.getUsers();
+    public ResponseEntity<List<User>> getAllUsers () {
+
+        return ResponseEntity.ok(userService.getUsers());
     }
 
     @GetMapping(path = "/id/{id}")
