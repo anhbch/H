@@ -1,5 +1,6 @@
 package com.application.puranh.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -26,7 +27,7 @@ public class Event {
     private LocalDate eventDate;
     //    @Column(name = "user_id", nullable = false)
     @ManyToOne(optional = false)
-//    @JsonIgnoreProperties(value = "events", allowSetters = true)
+    @JsonIgnore
     @JoinColumn
     private User user;
 

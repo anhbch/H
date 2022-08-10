@@ -35,7 +35,7 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.demo.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.application.puranh.controller"))
                 .paths(PathSelectors.regex("/.*"))
                 .build()
                 .apiInfo(apiEndPointsInfo())

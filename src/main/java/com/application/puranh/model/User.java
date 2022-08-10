@@ -18,8 +18,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-
-
     @NotEmpty
     @Column(name = "user_name", nullable = false, unique = true)
     private String userName;
