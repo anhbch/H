@@ -11,7 +11,7 @@
     <groupId>com.application.puranh</groupId>
     <artifactId>H</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>puranh</name>
     <description>puranh application</description>
     <properties>
