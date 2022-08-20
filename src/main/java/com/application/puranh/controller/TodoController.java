@@ -27,18 +27,6 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
-    @GetMapping(path = "/get-all")
-    public List<Todo> getAllTodos() {
-        logger.debug("Request to get all todos");
-        return todoService.getAll();
-    }
-
-    @GetMapping(path = "/get-all-dto")
-    public List<TodoDto> getAllDto() {
-        logger.debug("Request to get all todos dto");
-        return todoService.getAllDto();
-    }
-
     @GetMapping(path = "/{id}")
     public ResponseEntity<TodoDto> getById(@PathVariable Long id) {
         logger.debug("Request to get todo by id");

@@ -1,6 +1,7 @@
 package com.application.puranh.service.implement;
 
 
+import com.application.puranh.model.Role;
 import com.application.puranh.model.User;
 import com.application.puranh.service.DTO.UserRegistrationDto;
 import com.application.puranh.model.MyUserDetails;
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
+
+import static com.application.puranh.model.Role.Type.ROLE_USER;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -63,6 +66,9 @@ public class UserServiceImpl implements UserService {
         String encodedPassword = passwordEncoder.encode(userRegistrationDto.getPassword());
         user.setPassword(encodedPassword);
 
+        Role role = new Role();
+        role.setRole(ROLE_USER);
+        user.setRoles(Arrays.asList(role));
         return userRepository.save(user);
     }
 
@@ -72,6 +78,7 @@ public class UserServiceImpl implements UserService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
+        user.setRoles(user.getRoles());
         return userRepository.save(user);
     }
 

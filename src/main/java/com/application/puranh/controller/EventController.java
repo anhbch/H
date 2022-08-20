@@ -26,18 +26,6 @@ public class EventController {
 
     private final Logger logger = LoggerFactory.getLogger(User.class);
 
-    @GetMapping(path = "/events")
-    public List<Event> getAllEvents() {
-        logger.debug("Request to get all events");
-        return eventService.getEvents();
-    }
-
-    @GetMapping(path = "/events/show-all")
-    public List<EventDto> getAllEventDto() {
-        logger.debug("Request to get all events dto");
-        return eventService.findAll();
-    }
-
     @GetMapping (path = "/event/{eventId}")
     public ResponseEntity<EventDto> getEvent(@PathVariable Long eventId) {
         logger.debug("Request to get an event by event's id");

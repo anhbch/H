@@ -6,8 +6,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Data
 public class MyUserDetails implements UserDetails {
@@ -21,7 +23,11 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+        List<GrantedAuthority> result = new ArrayList<>();
+        for (Role role : user.getRoles()) {
+            result.add(new SimpleGrantedAuthority(role.getRole().toString()));
+        }
+        return result;
     }
 
     @Override

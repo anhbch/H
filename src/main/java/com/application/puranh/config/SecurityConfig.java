@@ -39,6 +39,7 @@ public class SecurityConfig {
         http.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/api/admin/**").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/api/registration", "/api/login").permitAll()
                 .antMatchers("/v2/api-docs","/swagger-resources/*", "*.html", "/api/v1/swagger.json")
                 .authenticated()

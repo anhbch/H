@@ -27,12 +27,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(path = "/get-all")
-    public ResponseEntity<List<User>> getAllUsers () {
-
-        return ResponseEntity.ok(userService.getUsers());
-    }
-
     @GetMapping(path = "/id/{id}")
     public ResponseEntity<User> getByUserId(@PathVariable(name = "id") Long id) {
         logger.debug("Request to get user by id");

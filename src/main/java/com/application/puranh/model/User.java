@@ -48,9 +48,19 @@ public class User {
     @Column(name = "date")
     private LocalDate date;
 
-    public User(String username, String password) {
-        this.userName = username;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Role> roles;
+
+    public User(String userName, String password, List<Role> roles) {
+        this.userName = userName;
         this.password = password;
+        this.roles = roles;
     }
 
     public User() {
@@ -64,8 +74,8 @@ public class User {
         this.password = password;
     }
 
-    public User(Long id, String userName, String lastName, String firstName,
-                String password, String email, String avaUrl, List<Event> events, List<Todo> todos, LocalDate date) {
+    public User(Long id, String userName, String lastName, String firstName, String password,
+                String email, String avaUrl, List<Event> events, List<Todo> todos, LocalDate date, List<Role> roles) {
         this.id = id;
         this.userName = userName;
         this.lastName = lastName;
@@ -76,6 +86,7 @@ public class User {
         this.events = events;
         this.todos = todos;
         this.date = date;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -157,5 +168,13 @@ public class User {
 
     public void setTodos(List<Todo> todos) {
         this.todos = todos;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
