@@ -9,13 +9,15 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.application.puranh</groupId>
-    <artifactId>H</artifactId>
+    <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>Puranh</name>
+    <description>Project for Spring Boot</description>
     <packaging>jar</packaging>
-    <name>puranh</name>
-    <description>puranh application</description>
     <properties>
         <java.version>1.8</java.version>
+        <version.mapstruct>1.4.2.Final</version.mapstruct>
+        <version.mapstruct-lombok>0.2.0</version.mapstruct-lombok>
     </properties>
 
     <dependencies>
@@ -230,6 +232,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <!--					<plugin>-->
             <!--						<artifactId>maven-surefire-plugin</artifactId>-->

@@ -1,1 +1,1 @@
-web: $JAVA_OPTS -Dserver.port=$PORT -jar target/puranh-1.0.jar
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/demo-0.0.1-SNAPSHOT.jar
