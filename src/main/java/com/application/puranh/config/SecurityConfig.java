@@ -38,14 +38,14 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and()
                 .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/api/admin/**").hasAnyAuthority("ROLE_ADMIN")
-                .antMatchers("/api/registration", "/api/login").permitAll()
-                .antMatchers("/v2/api-docs","/swagger-resources/*", "*.html", "/api/v1/swagger.json")
-                .authenticated()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+                .authorizeRequests().anyRequest().permitAll();
+//                .antMatchers("/api/admin/**").hasAnyAuthority("ROLE_ADMIN")
+//                .antMatchers("/api/registration", "/api/login").permitAll()
+//                .antMatchers("/v2/api-docs","/swagger-resources/*", "*.html", "/api/v1/swagger.json")
+//                .authenticated()
+//                .anyRequest().authenticated()
+//                .and()
+//                .httpBasic();
 //                    .and()
 //                .formLogin()
 //                    .loginPage("/swagger-ui.html")
